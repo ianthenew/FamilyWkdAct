@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 國慶週末 沉浸式活動導覽</title>
+    <style>
+        :root { --nav-height: 60px; }
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000; color: #fff; overflow: hidden;
+        }
+        nav {
+            position: fixed; top: 0; width: 100%; height: var(--nav-height);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
+            z-index: 100; display: flex; align-items: center; justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: rgba(255, 255, 255, 0.6); text-decoration: none; font-weight: bold;
+            font-size: 1.1rem; text-shadow: 0 1px 2px rgba(0,0,0,0.8); transition: color 0.3s;
+        }
+        nav a:hover, nav a.active { color: #fff; border-bottom: 2px solid #fff; }
+
+        .vertical-container {
+            height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth;
+        }
+        .vertical-container::-webkit-scrollbar { display: none; }
+
+        .region-section {
+            height: 100vh; width: 100vw; scroll-snap-align: start; position: relative;
+        }
+
+        .horizontal-container {
+            height: 100%; display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+        }
+        .horizontal-container::-webkit-scrollbar { display: none; }
+
+        .slide {
+            min-width: 100vw; height: 100%; scroll-snap-align: center; position: relative;
+            background-color: #222; background-size: cover; background-position: center;
+        }
+
+        .overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); pointer-events: none;
+        }
+
+        .info {
+            position: absolute; bottom: 80px; left: 20px; right: 60px;
+            animation: slideUp 0.5s ease-out;
+        }
+        .info h2 { font-size: 2.2rem; margin: 0 0 10px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .info .tag {
+            display: inline-block; background: #E91E63; padding: 4px 12px; border-radius: 20px;
+            font-size: 0.9rem; margin-bottom: 10px; font-weight: bold;
+        }
+        .info p { margin: 5px 0; font-size: 1.1rem; line-height: 1.5; color: #eee; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+
+        .swipe-hint {
+            position: absolute; top: 50%; right: 20px; transform: translateY(-50%);
+            color: rgba(255,255,255,0.7); font-size: 2rem; animation: bounceLeft 1.5s infinite; pointer-events: none;
+        }
+
+        .interactions {
+            position: absolute; bottom: 80px; right: 15px; display: flex; flex-direction: column; gap: 20px;
+        }
+        .icon-btn {
+            width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; font-size: 1.5rem; backdrop-filter: blur(5px);
+        }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounceLeft { 0%, 100% { transform: translate(0, -50%); } 50% { transform: translate(-10px, -50%); } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#north">北部</a>
+    <a href="#center">中部</a>
+    <a href="#south">南部</a>
+    <a href="#east">東部外島</a>
+    <a href="#parks">樂園展覽</a>
+</nav>
+
+<div class="vertical-container" id="main-scroll">
+    <!-- 北部 -->
+    <div class="region-section" id="north">
+        <div class="horizontal-container">
+            <div class="slide" id="slide-north-1" style="background-color: #4a148c;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">台北市</div><h2>PokéXciting!</h2><p>📍 信義區香堤大道<br>粉紅皮卡丘與遊行</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-north-2" style="background-color: #311b92;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">台北市</div><h2>國慶升旗早安市集</h2><p>📍 台北市政府廣場<br>升旗、市集與手作</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-north-3" style="background-color: #1a237e;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">台北市</div><h2>台北 101 國慶展演</h2><p>📍 台北 101<br>無人機展演與璀璨煙火</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-north-4" style="background-color: #01579b;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">桃園市</div><h2>2026 台灣設計展</h2><p>📍 青埔 / 中原文創<br>氣墊與職人DIY</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-north-5" style="background-color: #006064;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">新竹市</div><h2>青草湖秋焰祭</h2><p>📍 青草湖<br>蠟筆小新主題與煙火</p></div>
+                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 中部 -->
+    <div class="region-section" id="center">
+        <div class="horizontal-container">
+            <div class="slide" id="slide-central-1" style="background-color: #004d40;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">台中市</div><h2>台中眷村文化節</h2><p>📍 港區藝術中心等<br>九天民俗技藝與親子互動</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-central-2" style="background-color: #33691e;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">彰化縣</div><h2>鹿港糕餅文化節</h2><p>📍 鹿港公會堂<br>糕餅展售與踩街</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-central-3" style="background-color: #827717;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">南投縣</div><h2>世界茶業博覽會</h2><p>📍 中興新村<br>茶文化體驗與戶外市集</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-central-4" style="background-color: #f57f17;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">雲林縣</div><h2>雲林國際偶戲節</h2><p>📍 虎尾地區<br>傳統與現代布袋戲表演</p></div>
+                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 南部 -->
+    <div class="region-section" id="south">
+        <div class="horizontal-container">
+            <div class="slide" id="slide-south-1" style="background-color: #ff6f00;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">台南市</div><h2>曾文風箏嘉年華</h2><p>📍 曾文市政願景園區<br>大型風箏展演與闖關</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-south-2" style="background-color: #e65100;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">台南市</div><h2>水交社晴空藝術節</h2><p>📍 水交社文化園區<br>晴空大遊行與市集</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-south-3" style="background-color: #bf360c;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">高雄市</div><h2>愛河熱氣球繫留</h2><p>📍 愛河河西路側<br>熱氣球體驗與假日市集</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-south-4" style="background-color: #3e2723;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">高雄市</div><h2>左營萬年季</h2><p>📍 蓮池潭周邊<br>火獅踩街與在地小吃</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-south-5" style="background-color: #212121;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">屏東縣</div><h2>「世界在屏東」市集</h2><p>📍 屏東縣民公園<br>百攤異國美食與DIY</p></div>
+                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 東部與外島 -->
+    <div class="region-section" id="east">
+        <div class="horizontal-container">
+            <div class="slide" id="slide-east-1" style="background-color: #263238;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">台東縣</div><h2>2026國慶焰火</h2><p>📍 卑南溪出海口<br>世界的方舟：南島台灣</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-east-2" style="background-color: #1b5e20;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">宜蘭縣</div><h2>親子農場體驗</h2><p>📍 宜蘭各鄉鎮<br>近距離動物互動</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-east-3" style="background-color: #0d47a1;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">澎湖縣</div><h2>追風音樂燈光節</h2><p>📍 澎湖觀音亭<br>光影藝術與共融遊戲場</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-east-4" style="background-color: #f57f17;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">金門縣</div><h2>黃金高粱季</h2><p>📍 金門全島<br>尋找風獅爺與高粱田</p></div>
+                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 樂園展覽 -->
+    <div class="region-section" id="parks">
+        <div class="horizontal-container">
+            <div class="slide" id="slide-parks-1" style="background-color: #4a148c;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">主題樂園</div><h2>麗寶樂園</h2><p>📍 台中<br>18歲以下免費入園</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-parks-2" style="background-color: #bf360c;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">主題樂園</div><h2>六福村</h2><p>📍 新竹<br>萬聖變裝/身分證優惠</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-parks-3" style="background-color: #212121;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">主題樂園</div><h2>小人國主題樂園</h2><p>📍 桃園<br>穿黑衣/帶陀螺免費入園</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-parks-4" style="background-color: #3e2723;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">博物館</div><h2>國立故宮博物院</h2><p>📍 台北/嘉義<br>國慶當日免費參觀</p></div>
+                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+            <div class="slide" id="slide-parks-5" style="background-color: #01579b;">
+                <div class="overlay"></div>
+                <div class="info"><div class="tag">科教館</div><h2>國立海洋科技博物館</h2><p>📍 基隆<br>兩人同行一人免費</p></div>
+                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const sections = document.querySelectorAll('.region-section');
+    const navLinks = document.querySelectorAll('nav a');
+    const mainScroll = document.getElementById('main-scroll');
+
+    mainScroll.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (mainScroll.scrollTop >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            mainScroll.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
