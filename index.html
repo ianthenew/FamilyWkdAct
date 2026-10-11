@@ -2,268 +2,1094 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 國慶週末 沉浸式活動導覽</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026 國慶週末 親子探索指南 | 全台活動精選</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --nav-height: 60px; }
-        body, html {
-            margin: 0; padding: 0; height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #000; color: #fff; overflow: hidden;
-        }
-        nav {
-            position: fixed; top: 0; width: 100%; height: var(--nav-height);
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
-            z-index: 100; display: flex; align-items: center; justify-content: center;
-            gap: 20px;
-        }
-        nav a {
-            color: rgba(255, 255, 255, 0.6); text-decoration: none; font-weight: bold;
-            font-size: 1.1rem; text-shadow: 0 1px 2px rgba(0,0,0,0.8); transition: color 0.3s;
-        }
-        nav a:hover, nav a.active { color: #fff; border-bottom: 2px solid #fff; }
-
-        .vertical-container {
-            height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth;
-        }
-        .vertical-container::-webkit-scrollbar { display: none; }
-
-        .region-section {
-            height: 100vh; width: 100vw; scroll-snap-align: start; position: relative;
+        :root {
+            --primary: #FF5A36;
+            --primary-light: #FFF0ED;
+            --secondary: #00897B;
+            --accent: #FFB300;
+            --dark: #1E232A;
+            --gray-100: #F4F6F9;
+            --gray-200: #E9ECEF;
+            --gray-600: #6C757D;
+            --card-bg: #FFFFFF;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 25px -5px rgba(30, 35, 42, 0.08), 0 8px 10px -6px rgba(30, 35, 42, 0.04);
+            --shadow-hover: 0 20px 30px -10px rgba(30, 35, 42, 0.15);
         }
 
-        .horizontal-container {
-            height: 100%; display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-        }
-        .horizontal-container::-webkit-scrollbar { display: none; }
-
-        .slide {
-            min-width: 100vw; height: 100%; scroll-snap-align: center; position: relative;
-            background-color: #222; background-size: cover; background-position: center;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); pointer-events: none;
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+            background-color: var(--gray-100);
+            color: var(--dark);
+            line-height: 1.5;
+            padding-bottom: 80px;
         }
 
-        .info {
-            position: absolute; bottom: 80px; left: 20px; right: 60px;
-            animation: slideUp 0.5s ease-out;
-        }
-        .info h2 { font-size: 2.2rem; margin: 0 0 10px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
-        .info .tag {
-            display: inline-block; background: #E91E63; padding: 4px 12px; border-radius: 20px;
-            font-size: 0.9rem; margin-bottom: 10px; font-weight: bold;
-        }
-        .info p { margin: 5px 0; font-size: 1.1rem; line-height: 1.5; color: #eee; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
-
-        .swipe-hint {
-            position: absolute; top: 50%; right: 20px; transform: translateY(-50%);
-            color: rgba(255,255,255,0.7); font-size: 2rem; animation: bounceLeft 1.5s infinite; pointer-events: none;
-        }
-
-        .interactions {
-            position: absolute; bottom: 80px; right: 15px; display: flex; flex-direction: column; gap: 20px;
-        }
-        .icon-btn {
-            width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%;
-            display: flex; justify-content: center; align-items: center; font-size: 1.5rem; backdrop-filter: blur(5px);
+        /* --- Header & Top Bar --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes bounceLeft { 0%, 100% { transform: translate(0, -50%); } 50% { transform: translate(-10px, -50%); } }
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 900;
+            font-size: 1.15rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .brand-badge {
+            background: var(--dark);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-date {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* --- Hero Section: Title & Subtitle --- */
+        .intro-hero {
+            padding: 24px 0 16px;
+        }
+
+        .intro-hero h1 {
+            font-size: 1.75rem;
+            font-weight: 900;
+            line-height: 1.25;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .intro-hero h1 span {
+            color: var(--primary);
+        }
+
+        .intro-hero p {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+        }
+
+        /* --- Horizontal Snap Carousel (Top Featured) --- */
+        .carousel-title-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 18px 0 12px;
+        }
+
+        .section-heading {
+            font-size: 1.1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .swipe-label {
+            font-size: 0.78rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .featured-carousel {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 12px;
+            margin: 0 -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            scrollbar-width: none;
+        }
+
+        .featured-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .featured-card {
+            flex: 0 0 85%;
+            max-width: 380px;
+            scroll-snap-align: center;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            height: 380px;
+            background: #2A2E35;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: transform 0.2s ease;
+        }
+
+        .featured-card:active {
+            transform: scale(0.98);
+        }
+
+        .featured-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: transform 0.5s ease;
+        }
+
+        .featured-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 40%, rgba(15,18,22,0.95) 100%);
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .tag-pill {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .tag-pill.red { background: #FF4757; color: #fff; }
+        .tag-pill.orange { background: #FF8F00; color: #fff; }
+        .tag-pill.teal { background: #00B894; color: #fff; }
+        .tag-pill.blue { background: #0984E3; color: #fff; }
+
+        .featured-content h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .featured-content p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #FFD200;
+            font-weight: 600;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 10px;
+        }
+
+        /* --- Sticky Filter Tabs --- */
+        .filter-wrapper {
+            position: sticky;
+            top: 55px;
+            z-index: 90;
+            background: rgba(244, 246, 249, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 0;
+            margin: 12px 0;
+        }
+
+        .filter-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding: 2px 0;
+        }
+
+        .filter-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-chip {
+            background: #fff;
+            border: 1.5px solid var(--gray-200);
+            color: var(--gray-600);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-chip.active {
+            background: var(--dark);
+            color: #fff;
+            border-color: var(--dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+        }
+
+        /* --- Activity Cards Feed --- */
+        .cards-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 8px;
+        }
+
+        .event-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-media {
+            position: relative;
+            width: 100%;
+            height: 190px;
+            background-color: #E2E8F0;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card-region-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(30, 35, 42, 0.82);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-header-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.35;
+        }
+
+        .like-btn {
+            background: var(--gray-100);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .like-btn.liked {
+            background: #FFE3E6;
+            transform: scale(1.1);
+        }
+
+        .card-info-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin: 8px 0 10px;
+            font-size: 0.83rem;
+            color: var(--gray-600);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-item .icon {
+            font-size: 0.95rem;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: #4A5568;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .perk-text {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            background: var(--primary-light);
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .action-link:hover, .action-link:active {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* --- Empty State --- */
+        .empty-state {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray-600);
+        }
+
+        /* --- Bottom Tips & Footer --- */
+        .notice-card {
+            background: #FFF9E6;
+            border-left: 4px solid var(--accent);
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            margin: 32px 0 20px;
+            font-size: 0.82rem;
+            color: #795548;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--gray-600);
+            padding: 20px 0;
+        }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="#north">北部</a>
-    <a href="#center">中部</a>
-    <a href="#south">南部</a>
-    <a href="#east">東部外島</a>
-    <a href="#parks">樂園展覽</a>
-</nav>
+<!-- Header -->
+<header>
+    <a href="#" class="brand-logo">
+        <span>🎈 親子樂遊</span>
+        <span class="brand-badge">2026 國慶特輯</span>
+    </a>
+    <div class="header-date">10/10 (六) - 10/11 (日)</div>
+</header>
 
-<div class="vertical-container" id="main-scroll">
-    <!-- 北部 -->
-    <div class="region-section" id="north">
-        <div class="horizontal-container">
-            <div class="slide" id="slide-north-1" style="background-color: #4a148c;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">台北市</div><h2>PokéXciting!</h2><p>📍 信義區香堤大道<br>粉紅皮卡丘與遊行</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-north-2" style="background-color: #311b92;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">台北市</div><h2>國慶升旗早安市集</h2><p>📍 台北市政府廣場<br>升旗、市集與手作</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-north-3" style="background-color: #1a237e;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">台北市</div><h2>台北 101 國慶展演</h2><p>📍 台北 101<br>無人機展演與璀璨煙火</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-north-4" style="background-color: #01579b;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">桃園市</div><h2>2026 台灣設計展</h2><p>📍 青埔 / 中原文創<br>氣墊與職人DIY</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-north-5" style="background-color: #006064;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">新竹市</div><h2>青草湖秋焰祭</h2><p>📍 青草湖<br>蠟筆小新主題與煙火</p></div>
-                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
+<div class="container">
+    
+    <!-- Hero Intro -->
+    <section class="intro-hero">
+        <h1>這個連假，<br>帶寶貝去哪裡放電？</h1>
+        <p>為您精選全台熱門活動、煙火秀與樂園免票優惠攻略！</p>
+    </section>
+
+    <!-- Top Featured Carousel (Method 3: Horizontal Snap) -->
+    <section>
+        <div class="carousel-title-bar">
+            <h2 class="section-heading">🔥 國慶最焦點 (精選活動)</h2>
+            <div class="swipe-label">左右滑動探索 👉</div>
+        </div>
+
+        <div class="featured-carousel">
+            <!-- Featured 1 -->
+            <a href="https://www.google.com/maps/search/?api=1&query=台東市卑南溪出海口" target="_blank" class="featured-card">
+                <img src="https://images.unsplash.com/photo-1498931299472-f7a63a5a1cfa?auto=format&fit=crop&w=800&q=80" alt="台東國慶焰火" class="featured-img">
+                <div class="featured-gradient"></div>
+                <div class="featured-content">
+                    <div class="badge-row">
+                        <span class="tag-pill red">國家級盛事</span>
+                        <span class="tag-pill orange">10/10 晚間限定</span>
+                    </div>
+                    <h3>2026 國慶焰火在台東</h3>
+                    <p>睽違9年重返台東！主題「世界的方舟：南島台灣」，超過1.9萬發璀璨煙火與交響樂磅礡登場。</p>
+                    <div class="featured-meta">
+                        <span>📍 台東市卑南溪出海口</span>
+                        <span>點擊開啟地圖 ↗</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Featured 2 -->
+            <a href="https://www.google.com/maps/search/?api=1&query=台北101" target="_blank" class="featured-card">
+                <img src="https://images.unsplash.com/photo-1508873696983-2df5293cb395?auto=format&fit=crop&w=800&q=80" alt="台北101國慶展演" class="featured-img">
+                <div class="featured-gradient"></div>
+                <div class="featured-content">
+                    <div class="badge-row">
+                        <span class="tag-pill red">科技大秀</span>
+                        <span class="tag-pill blue">10/10 22:00</span>
+                    </div>
+                    <h3>台北 101 國慶光雕煙火</h3>
+                    <p>長達10分鐘無人機震撼展演、雷射光雕與璀璨煙火秀，市府廣場與國父紀念館為最佳視角！</p>
+                    <div class="featured-meta">
+                        <span>📍 台北 101 / 市民廣場</span>
+                        <span>點擊開啟地圖 ↗</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Featured 3 -->
+            <a href="https://www.google.com/maps/search/?api=1&query=台中麗寶樂園" target="_blank" class="featured-card">
+                <img src="https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=800&q=80" alt="麗寶樂園親子同樂" class="featured-img">
+                <div class="featured-gradient"></div>
+                <div class="featured-content">
+                    <div class="badge-row">
+                        <span class="tag-pill teal">樂園特惠</span>
+                        <span class="tag-pill orange">18歲以下免費</span>
+                    </div>
+                    <h3>麗寶樂園：雙十放電狂歡</h3>
+                    <p>18歲以下搭配一位全票者享免費入園！渡假區結合摩天輪、探索世界，給全家最暢快的週末狂歡。</p>
+                    <div class="featured-meta">
+                        <span>📍 台中市后里區</span>
+                        <span>點擊開啟地圖 ↗</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Featured 4 -->
+            <a href="https://www.google.com/maps/search/?api=1&query=台南曾文市政願景園區" target="_blank" class="featured-card">
+                <img src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=800&q=80" alt="曾文風箏嘉年華" class="featured-img">
+                <div class="featured-gradient"></div>
+                <div class="featured-content">
+                    <div class="badge-row">
+                        <span class="tag-pill teal">巨型風箏</span>
+                        <span class="tag-pill blue">免門票放電</span>
+                    </div>
+                    <h3>臺南曾文風箏嘉年華</h3>
+                    <p>主打「臺灣味X臺南甜」，漫天巨型造型風箏、親子闖關冒險與手作彩繪 DIY，大人小孩都瘋狂！</p>
+                    <div class="featured-meta">
+                        <span>📍 曾文市政願景園區</span>
+                        <span>點擊開啟地圖 ↗</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Sticky Filter Bar -->
+    <div class="filter-wrapper">
+        <div class="filter-scroll" id="filterBar">
+            <button class="filter-chip active" data-category="all">✨ 全部活動 (18)</button>
+            <button class="filter-chip" data-category="north">📍 北部特搜</button>
+            <button class="filter-chip" data-category="central">📍 中部放電</button>
+            <button class="filter-chip" data-category="south">📍 南部熱門</button>
+            <button class="filter-chip" data-category="east">📍 東部與外島</button>
+            <button class="filter-chip" data-category="parks">🎪 主題樂園與展覽</button>
         </div>
     </div>
 
-    <!-- 中部 -->
-    <div class="region-section" id="center">
-        <div class="horizontal-container">
-            <div class="slide" id="slide-central-1" style="background-color: #004d40;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">台中市</div><h2>台中眷村文化節</h2><p>📍 港區藝術中心等<br>九天民俗技藝與親子互動</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+    <!-- Activity Cards Feed -->
+    <div class="cards-feed" id="eventsContainer">
+
+        <!-- 1. PokéXciting in 台北 -->
+        <div class="event-card" data-category="north">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80" alt="PokéXciting in 台北" class="card-img">
+                <span class="card-region-tag">台北市</span>
             </div>
-            <div class="slide" id="slide-central-2" style="background-color: #33691e;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">彰化縣</div><h2>鹿港糕餅文化節</h2><p>📍 鹿港公會堂<br>糕餅展售與踩街</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-central-3" style="background-color: #827717;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">南投縣</div><h2>世界茶業博覽會</h2><p>📍 中興新村<br>茶文化體驗與戶外市集</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-central-4" style="background-color: #f57f17;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">雲林縣</div><h2>雲林國際偶戲節</h2><p>📍 虎尾地區<br>傳統與現代布袋戲表演</p></div>
-                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">PokéXciting! 寶可夢香堤慶典</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 (六) - 10/11 (日) 全天</div>
+                    <div class="info-item"><span class="icon">📍</span> 信義區香堤大道廣場及周邊</div>
+                </div>
+                <p class="card-desc">歡慶寶可夢 30 週年！現場有粉紅皮卡丘見面會、寶可夢遊行與主題打卡裝置，小寶貝拍照必去！</p>
+                <div class="card-footer">
+                    <span class="perk-text">🎁 戶外免費打卡活動</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=信義區香堤大道廣場" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
             </div>
         </div>
+
+        <!-- 2. 台北升旗早安市集 -->
+        <div class="event-card" data-category="north">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1496337589254-7e19d01cec44?auto=format&fit=crop&w=800&q=80" alt="台北市國慶升旗" class="card-img">
+                <span class="card-region-tag">台北市</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">市府國慶升旗典禮 ＆ 早安市集</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 (六) 07:30 - 12:00</div>
+                    <div class="info-item"><span class="icon">📍</span> 台北市政府市民廣場</div>
+                </div>
+                <p class="card-desc">早起升旗還能逛市集！現場提供大型充氣遊具體驗、環境生態手作 DIY 課程，適合全家早晨同樂。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🎈 大型氣墊遊具 + 手作</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=台北市政府市民廣場" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 台灣設計展 (桃園) -->
+        <div class="event-card" data-category="north">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="台灣設計展" class="card-img">
+                <span class="card-region-tag">桃園市</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">2026 台灣設計展：桃園流</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 展期至 10/11 (日) 把握最後週末</div>
+                    <div class="info-item"><span class="icon">📍</span> 青埔會展中心 / 中原文創園區</div>
+                </div>
+                <p class="card-desc">展期最後倒數！專為親子規劃了兒童超跑賽道、大型氣墊、免費職人手作 DIY 與集章闖關拿好禮。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🏎️ 兒童超跑 + 職人手作</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=桃園會展中心" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 青草湖秋焰祭 (新竹) -->
+        <div class="event-card" data-category="north">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?auto=format&fit=crop&w=800&q=80" alt="青草湖秋焰祭" class="card-img">
+                <span class="card-region-tag">新竹市</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">青草湖秋焰祭：蠟筆小新水上氣偶</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 - 10/11 (10/11 晚間煙火秀)</div>
+                    <div class="info-item"><span class="icon">📍</span> 新竹市青草湖</div>
+                </div>
+                <p class="card-desc">蠟筆小新巨型氣偶浮現湖面！設有 9 大主題打卡造景與 Chill 市集，10/11 晚間更有湖畔煙火浪漫點燈。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🎆 蠟筆小新打卡 + 湖畔煙火</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=新竹市青草湖" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 台中眷村文化節 -->
+        <div class="event-card" data-category="central">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=800&q=80" alt="台中眷村文化節" class="card-img">
+                <span class="card-region-tag">台中市</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">2026 台中眷村文化節：生活開箱</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/9 - 10/11 10:00 - 17:00</div>
+                    <div class="info-item"><span class="icon">📍</span> 港區藝術中心、眷村文物館</div>
+                </div>
+                <p class="card-desc">精彩 MOMO 家族見面會、九天民俗技藝團表演，現場還有陀螺彩繪、復古童玩體驗與美食老街市集。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🎭 MOMO家族 + 復古童玩</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=台中市港區藝術中心" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. 鹿港糕餅文化節 -->
+        <div class="event-card" data-category="central">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="鹿港糕餅文化節" class="card-img">
+                <span class="card-region-tag">彰化縣</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">鹿港糕餅文化節 ＆ 古式婚禮踩街</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 - 10/11 14:00 - 18:00</div>
+                    <div class="info-item"><span class="icon">📍</span> 鹿港公會堂前廣場</div>
+                </div>
+                <p class="card-desc">品嚐鹿港經典古早味糕餅！10/10 下午有「古式迎親婚禮」特色踩街活動，帶小朋友感受傳統人文風情。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🍪 美食試吃 + 古早迎親踩街</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=鹿港公會堂" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. 南投世界茶業博覽會 -->
+        <div class="event-card" data-category="central">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=800&q=80" alt="南投世界茶業博覽會" class="card-img">
+                <span class="card-region-tag">南投縣</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">2026 南投世界茶業博覽會</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 展期至 10/11 (日) 閉幕倒數</div>
+                    <div class="info-item"><span class="icon">📍</span> 南投中興新村大草坪</div>
+                </div>
+                <p class="card-desc">茶文化闖關體驗、茶點 DIY！中興新村廣闊林蔭草皮是野餐奔跑聖地，全家享受綠意秋日悠閒時光。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🍃 大草皮放電 + 親子野餐</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=南投中興新村" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. 雲林國際偶戲節 -->
+        <div class="event-card" data-category="central">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" alt="雲林國際偶戲節" class="card-img">
+                <span class="card-region-tag">雲林縣</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">2026 雲林國際偶戲節</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 - 10/11 精彩劇目公演</div>
+                    <div class="info-item"><span class="icon">📍</span> 雲林布袋戲館 / 虎尾文化園區</div>
+                </div>
+                <p class="card-desc">將傳統布袋戲結合動漫光影與大型掌中偶體驗！適合帶大朋友小朋友近距離操偶感受台灣本土國寶工藝。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🎪 免門票掌中偶操偶體驗</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=雲林布袋戲館" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. 高雄愛河熱氣球 -->
+        <div class="event-card" data-category="south">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1506059612708-99d6c258160e?auto=format&fit=crop&w=800&q=80" alt="高雄愛河熱氣球" class="card-img">
+                <span class="card-region-tag">高雄市</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">愛河熱氣球繫留升空 ＆ 假日市集</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 - 10/11 (市集 15:00 - 21:00)</div>
+                    <div class="info-item"><span class="icon">📍</span> 高雄愛河河西路側 (228和平公園)</div>
+                </div>
+                <p class="card-desc">不用遠跑台東！愛河畔就能看熱氣球升空繫留，午後還有文創手作與胖卡美食市集，河畔吹風超舒適。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🎈 熱氣球繫留 + 河岸市集</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=高雄愛河河西路" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. 左營萬年季 -->
+        <div class="event-card" data-category="south">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="左營萬年季" class="card-img">
+                <span class="card-region-tag">高雄市</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">左營萬年季：火獅踩街嘉年華</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 展期至 10/11 (日) 晚間</div>
+                    <div class="info-item"><span class="icon">📍</span> 左營蓮池潭及孔廟周邊</div>
+                </div>
+                <p class="card-desc">高雄年度最具代表性民俗盛會！巨大神轎火獅巡街、傳統民俗陣頭表演，周邊環湖小吃市集熱鬧非凡。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🦁 傳統神獸火獅巡街祈福</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=高雄左營蓮池潭" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. 世界在屏東市集 -->
+        <div class="event-card" data-category="south">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="世界在屏東市集" class="card-img">
+                <span class="card-region-tag">屏東縣</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">「世界在屏東」國際文化狂歡節</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 - 10/11 14:00 - 21:00</div>
+                    <div class="info-item"><span class="icon">📍</span> 屏東縣民公園</div>
+                </div>
+                <p class="card-desc">集結破百攤異國美食特色攤位！搭配多國音樂舞蹈嘉年華，並特別設有親子異國手工藝 DIY 體驗區。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🌮 100+ 異國美食市集</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=屏東縣民公園" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. 宜蘭親子生態農場 -->
+        <div class="event-card" data-category="east">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80" alt="宜蘭親子農場" class="card-img">
+                <span class="card-region-tag">宜蘭縣</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">宜蘭水豚狐狸近距離生態農場</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 連假期間 09:30 - 17:30</div>
+                    <div class="info-item"><span class="icon">📍</span> 壯圍蘭陽動植物王國 / 礁溪回巢</div>
+                </div>
+                <p class="card-desc">零距離餵食呆萌水豚、澳洲袋鼠與白狐狸！遇雨還可轉戰礁溪「頭等倉」、「歪歪球」等大型室內體驗館。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🦘 動物互動 + 室內雨天備案</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=壯圍蘭陽動植物王國" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13. 澎湖追風音樂燈光節 -->
+        <div class="event-card" data-category="east">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="澎湖追風音樂燈光節" class="card-img">
+                <span class="card-region-tag">澎湖縣</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">2026 澎湖追風音樂燈光節</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 展期至 10/11 (日) 閉幕</div>
+                    <div class="info-item"><span class="icon">📍</span> 澎湖馬公觀音亭海濱</div>
+                </div>
+                <p class="card-desc">入夜後夢幻光影沉浸展演與演唱會！觀音亭園區設有大型共融兒童遊戲場，海風微拂適合全家慢活散步。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🌊 海岸光影 + 共融遊樂場</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=澎湖馬公觀音亭" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 14. 金門黃金高粱季 -->
+        <div class="event-card" data-category="east">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="金門黃金高粱季" class="card-img">
+                <span class="card-region-tag">金門縣</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">金門黃金高粱季 ＆ 尋找風獅爺 APP</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10月秋季限定</div>
+                    <div class="info-item"><span class="icon">📍</span> 金門全島古聚落</div>
+                </div>
+                <p class="card-desc">秋季金色高粱穗波瀾壯闊！全家拿著手機下載官方 APP，在各村落聚落展開「尋找風獅爺」實境尋寶集章大冒險。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🌾 實境集章打卡大冒險</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=金門瓊林聚落" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 15. 六福村主題樂園 -->
+        <div class="event-card" data-category="parks">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=800&q=80" alt="六福村主題遊樂園" class="card-img">
+                <span class="card-region-tag">新竹縣</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">六福村：墓碑鎮變裝 ＆ 國慶優惠</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 - 10/11 09:30 - 19:30</div>
+                    <div class="info-item"><span class="icon">📍</span> 新竹縣關西鎮六福村</div>
+                </div>
+                <p class="card-desc">身分證有「1」與「0」享優惠 $599；未滿12歲童只要 $399 (送SNOOPY票卡)！全身萬聖裝扮同享 $599。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🎃 墓碑鎮大遊行 + 兒童特惠</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=六福村主題遊樂園" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 16. 小人國主題樂園 -->
+        <div class="event-card" data-category="parks">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=800&q=80" alt="小人國主題樂園" class="card-img">
+                <span class="card-region-tag">桃園市</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">小人國：穿黑衣或帶陀螺免費入園</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 - 10/11 09:00 - 17:00</div>
+                    <div class="info-item"><span class="icon">📍</span> 桃園市龍潭區小人國</div>
+                </div>
+                <p class="card-desc">18歲以下穿著 80% 黑色系穿搭或出示指定旋轉陀螺，即享「免費入園」！全區迷你模型與室內遊樂區暢玩。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🆓 18歲以下指定條件免門票</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=小人國主題樂園" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 17. 國立故宮博物院 -->
+        <div class="event-card" data-category="parks">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=800&q=80" alt="國立故宮博物院" class="card-img">
+                <span class="card-region-tag">台北 / 嘉義</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">故宮南北院區：國慶日全員免費</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 (六) 國慶當天限定</div>
+                    <div class="info-item"><span class="icon">📍</span> 台北外雙溪北院 / 嘉義太保南院</div>
+                </div>
+                <p class="card-desc">10/10 國慶日當天南北院全天免費參觀！南院搭配「雪域盛會」主題藝術節，特展與兒藝互動中心寓教於樂。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🆓 雙十當天全民免費入館</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=國立故宮博物院" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 18. 國立海洋科技博物館 -->
+        <div class="event-card" data-category="parks">
+            <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="國立海洋科技博物館" class="card-img">
+                <span class="card-region-tag">基隆市</span>
+            </div>
+            <div class="card-body">
+                <div class="card-header-line">
+                    <h3 class="card-title">海科館：主題館兩人同行一人免費</h3>
+                    <button class="like-btn" onclick="toggleLike(this)" title="收藏">🤍</button>
+                </div>
+                <div class="card-info-row">
+                    <div class="info-item"><span class="icon">🕒</span> 10/10 - 10/11 09:00 - 17:00</div>
+                    <div class="info-item"><span class="icon">📍</span> 基隆市中正區海科館</div>
+                </div>
+                <p class="card-desc">連假限定雙特展套票「買一送一」！館內展出極地探險與水下人魚展演，室內冷氣充足，是絕佳雨天備案。</p>
+                <div class="card-footer">
+                    <span class="perk-text">🎟️ 套票買一送一 + 室內首選</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=國立海洋科技博物館" target="_blank" class="action-link">導航地圖 ↗</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- 南部 -->
-    <div class="region-section" id="south">
-        <div class="horizontal-container">
-            <div class="slide" id="slide-south-1" style="background-color: #ff6f00;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">台南市</div><h2>曾文風箏嘉年華</h2><p>📍 曾文市政願景園區<br>大型風箏展演與闖關</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-south-2" style="background-color: #e65100;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">台南市</div><h2>水交社晴空藝術節</h2><p>📍 水交社文化園區<br>晴空大遊行與市集</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-south-3" style="background-color: #bf360c;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">高雄市</div><h2>愛河熱氣球繫留</h2><p>📍 愛河河西路側<br>熱氣球體驗與假日市集</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-south-4" style="background-color: #3e2723;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">高雄市</div><h2>左營萬年季</h2><p>📍 蓮池潭周邊<br>火獅踩街與在地小吃</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-south-5" style="background-color: #212121;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">屏東縣</div><h2>「世界在屏東」市集</h2><p>📍 屏東縣民公園<br>百攤異國美食與DIY</p></div>
-                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-        </div>
+    <!-- Empty State (if filter has no items) -->
+    <div class="empty-state" id="emptyState">
+        <h3>🔍 沒有符合條件的活動</h3>
+        <p>請嘗試選擇其他分類看看！</p>
     </div>
 
-    <!-- 東部與外島 -->
-    <div class="region-section" id="east">
-        <div class="horizontal-container">
-            <div class="slide" id="slide-east-1" style="background-color: #263238;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">台東縣</div><h2>2026國慶焰火</h2><p>📍 卑南溪出海口<br>世界的方舟：南島台灣</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-east-2" style="background-color: #1b5e20;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">宜蘭縣</div><h2>親子農場體驗</h2><p>📍 宜蘭各鄉鎮<br>近距離動物互動</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-east-3" style="background-color: #0d47a1;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">澎湖縣</div><h2>追風音樂燈光節</h2><p>📍 澎湖觀音亭<br>光影藝術與共融遊戲場</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-east-4" style="background-color: #f57f17;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">金門縣</div><h2>黃金高粱季</h2><p>📍 金門全島<br>尋找風獅爺與高粱田</p></div>
-                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-        </div>
+    <!-- Notice Card -->
+    <div class="notice-card">
+        <strong>⚠️ 出遊前溫馨提醒：</strong><br>
+        1. 國慶連假各觀光區與市府周邊實施不同程度交通管制，建議多搭乘大眾捷運與接駁專車。<br>
+        2. 部分樂園免費或優惠資格（如穿搭比例、證件）須依現場工作人員判定為準，請攜帶身分證件備查。
     </div>
 
-    <!-- 樂園展覽 -->
-    <div class="region-section" id="parks">
-        <div class="horizontal-container">
-            <div class="slide" id="slide-parks-1" style="background-color: #4a148c;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">主題樂園</div><h2>麗寶樂園</h2><p>📍 台中<br>18歲以下免費入園</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-parks-2" style="background-color: #bf360c;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">主題樂園</div><h2>六福村</h2><p>📍 新竹<br>萬聖變裝/身分證優惠</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-parks-3" style="background-color: #212121;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">主題樂園</div><h2>小人國主題樂園</h2><p>📍 桃園<br>穿黑衣/帶陀螺免費入園</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-parks-4" style="background-color: #3e2723;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">博物館</div><h2>國立故宮博物院</h2><p>📍 台北/嘉義<br>國慶當日免費參觀</p></div>
-                <div class="swipe-hint">👉</div><div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-            <div class="slide" id="slide-parks-5" style="background-color: #01579b;">
-                <div class="overlay"></div>
-                <div class="info"><div class="tag">科教館</div><h2>國立海洋科技博物館</h2><p>📍 基隆<br>兩人同行一人免費</p></div>
-                <div class="interactions"><div class="icon-btn">❤️</div><div class="icon-btn">↗️</div></div>
-            </div>
-        </div>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 國慶親子週末探索特輯 | 整理自官方與觀光局最新公開資訊</p>
+    </footer>
+
 </div>
 
+<!-- Interactive JS -->
 <script>
-    const sections = document.querySelectorAll('.region-section');
-    const navLinks = document.querySelectorAll('nav a');
-    const mainScroll = document.getElementById('main-scroll');
+    // 1. Category Filtering
+    const chips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.event-card');
+    const emptyState = document.getElementById('emptyState');
 
-    mainScroll.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (mainScroll.scrollTop >= sectionTop - 100) {
-                current = section.getAttribute('id');
-            }
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    });
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            // Remove active from all
+            chips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            mainScroll.scrollTo({
-                top: targetSection.offsetTop,
-                behavior: 'smooth'
+            const selectedCat = chip.getAttribute('data-category');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (selectedCat === 'all' || cardCat === selectedCat) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
             });
+
+            if (visibleCount === 0) {
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+            }
         });
     });
+
+    // 2. Interactive Like / Bookmark Toggle
+    function toggleLike(btn) {
+        btn.classList.toggle('liked');
+        if (btn.classList.contains('liked')) {
+            btn.innerHTML = '❤️';
+            showToast('已加入您的口袋收藏！');
+        } else {
+            btn.innerHTML = '🤍';
+        }
+    }
+
+    // 3. Simple Toast Notification
+    function showToast(msg) {
+        let toast = document.createElement('div');
+        toast.style.position = 'fixed';
+        toast.style.bottom = '24px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.background = 'rgba(30,35,42,0.92)';
+        toast.style.color = '#fff';
+        toast.style.padding = '10px 20px';
+        toast.style.borderRadius = '30px';
+        toast.style.fontSize = '0.85rem';
+        toast.style.fontWeight = '700';
+        toast.style.zIndex = '999';
+        toast.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+        toast.style.transition = 'all 0.3s ease';
+        toast.innerText = msg;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 1800);
+    }
 </script>
 
 </body>
